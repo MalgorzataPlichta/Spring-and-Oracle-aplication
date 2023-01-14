@@ -4,98 +4,155 @@
     <meta charset="UTF-8"/>
     <title>Welcome Page</title>
 
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
 
 </head>
 
-<!-- <body th:style="'background: url(/assets/img/img.png) no-repeat center center fixed;'"> -->
+<style>
+
+    body{
+        font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;;
+    }
+    .navbar-custom {
+        height: 75px;
+        padding: 10px 50px 10px 0;
+        margin-bottom: 0;
+        letter-spacing: 1px;
+
+        color: #93c572;
+        background-color: #004040;
+    }
 
 
-<!--<style th:inline="text">-->
-<!--    body{-->
-<!--        background: url([[@{/assets/img/img.png}]])-->
-<!--        no-repeat center center fixed;-->
-<!--    }-->
-<!--</style>-->
-
+</style>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">BDBT Spring Boot Project - Part II</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/main}">Main</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/main}">Login</a></a>
-                </li>
-
-            </ul>
+<nav class="navbar navbar-inverse navbar-custom" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="color: #93c572"> BDBT Spring Boot Project: Athletics Club</a>
         </div>
+        <ul class="nav navbar-nav">
+            <li class="nav-item" >
+                <a class="nav-link" href="#">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/main}">Main</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/about.html}">About</a></a>
+            </li>
+
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a class="nav-link" th:href="@{/main}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+        </ul>
     </div>
 </nav>
-
 
 <!--Using images in page    -->
 <!-- <img th:src="@{/assets/img/img.png}" alt="Image" class="img-fluid"> -->
 
+<div class="bigger-cont" style="background-color: #93c572; height: auto" >
+    <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: auto">
+        <div class="row">
+            <div class="col-md-10 mt-5" style="margin-top: 50px">
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 mt-5">
+                <label style="font-size:30px">Welcome to the home page!</label>
+                <div style="font-size:20px">If you want to login, click <a class="text-secondary" style="color:#004040" th:href="@{/main}"><b>here</b></a> or in the
+                    upper right corner.
+                </div>
 
-            <label style="font-size:30px">Welcome to the home page!</label>
-            <div style="font-size:20px">If you want to login, click <a th:href="@{/main}"><b>here</b></a> or in the
-                upper right corner.
+                <br>
+                <br>
+                <div style="font-size:20px">Our athletic clubs are an international initiative co-financed by the European Union. We are guided by the idea of developing healthy habits and ensuring the right dose of movement during the day, regardless of age. Check out our Clubs!</div>
+
             </div>
-
         </div>
+
+        </br>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Club number</th>
+                <th scope="col">Name</th>
+                <th scope="col">Date opened</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Mail address</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each = "Kluby : ${klubyList}">
+                <td th:text = "${Kluby.nr_klubu}">Numer klubu</td>
+                <td th:text = "${Kluby.nazwa}">Nazwa</td>
+                <td th:text = "${Kluby.data_otwarcia}">Data otwarcia</td>
+                <td th:text = "${Kluby.nr_telefonu}">Numer telefonu</td>
+                <td th:text = "${Kluby.adres_email}">Adres mail</td>
+                <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
+            </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <br>
+
+
+        <div class="container" style="justify-content: center; max-width: 600px; ">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" style="box-sizing:border-box; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="item active">
+                        <img src="https://images.pexels.com/photos/9648762/pexels-photo-9648762.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Los Angeles" style="max-height: 400px; width: auto" >
+                    </div>
+
+                    <div class="item" >
+                        <img src="https://images.pexels.com/photos/6740823/pexels-photo-6740823.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Chicago" style="max-height: 400px; width: auto">
+                    </div>
+
+                    <div class="item" >
+                        <img src="https://www.bing.com/images/blob?bcid=qAYszOYl8CAFPg" alt="New york" style="max-height: 400px; width: auto">
+                    </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+
+        <div style="font-size: 20px; padding-top: 10px; padding-bottom: 15px"> Appropriately qualified trainers conduct classes in small groups, which ensures an individual approach. At our facility, you can train primarily athletics. Groups are selected based on age and ability. We also have a special program for seniors and pregnant women. We are open to multiculturalism and diversity, which is confirmed by many years of experience and cooperation with sports centers abroad. We also organize competitions of various ranks, as well as sports exchanges.</div>
+        <br>
     </div>
+
 </div>
 
-<!--<div align="center">
-    <h1>Sales Records</h1>
-
-    <table border="1" cellpadding="10">
-
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Item Name</th>
-            <th>Quantity</th>
-            <th>Amount</th>
-            <th>Action</th>
-
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr th:each="sale : ${listSale}">
-            <td th:text="${sale.id}">ID</td>
-            <td th:text="${sale.item}">Item Name</td>
-            <td th:text="${sale.quantity}">Quantity</td>
-            <td th:text="${sale.amount}">Amount</td>
-        </tr>
-        </tbody>
-
-    </table>
-
-</div>-->
 
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

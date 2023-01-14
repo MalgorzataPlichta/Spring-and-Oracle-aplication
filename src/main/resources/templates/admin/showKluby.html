@@ -67,37 +67,49 @@
 
 <div class="bigger-cont" style="background-color: #93c572; height: 800px; ">
     <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 800px; padding-top: 25px">
-        <ul class="nav nav-tabs" style="color: #004040">
+
+        <ul class="nav nav-tabs" style="color: #93c572">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Main Admin</a>
+                <a class="nav-link" href="http://localhost:8080/main_admin">Main Admin</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="http://localhost:8080/add_Klub">Add New Club</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/showKluby">Update/Delete Club</a>
+                <a class="nav-link active" aria-current="page" href="#">Update/Delete Club</a>
             </li>
         </ul>
 
         <div class="row" style="padding-top: 20px">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Club number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date opened</th>
+                    <th scope="col">Phone number</th>
+                    <th scope="col">Mail address</th>
+                </tr>
+                </thead>
+                <tbody>
 
-            <div class="col-md-10 mt-5">
-                <form method="post" th:action="@{/index}">
-                    <div class="form-group">
-                        <label style="font-size:30px" th:inline="text">Welcome <a
-                                style="color:#93c572; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
-                            to the main page!</label>
-                        <div style="font-size:20px">If you want to logout, click "Logout" button under this text.</div>
-                    </div>
-
-                    <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Logout
-                    </button>
-                </form>
-            </div>
+                <tr th:each = "Kluby : ${klubyList}">
+                    <td th:text = "${Kluby.nr_klubu}">Numer klubu</td>
+                    <td th:text = "${Kluby.nazwa}">Nazwa</td>
+                    <td th:text = "${Kluby.data_otwarcia}">Data otwarcia</td>
+                    <td th:text = "${Kluby.nr_telefonu}">Numer telefonu</td>
+                    <td th:text = "${Kluby.adres_email}">Adres mail</td>
+                    <td>
+                        <a th:href="@{'/edit/'+ ${Kluby.nr_klubu}}">Edit</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a th:href="@{'/delete/'+ ${Kluby.nr_klubu}}">Delete</a>
+                    </td>
+                    <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
+                </tr>
+                </tbody>
+            </table>
 
         </div>
-
-
 
 
     </div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -67,12 +68,12 @@
 
 <div class="bigger-cont" style="background-color: #93c572; height: 800px; ">
     <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 800px; padding-top: 25px">
-        <ul class="nav nav-tabs" style="color: #004040">
+        <ul class="nav nav-tabs" style="color: #93c572">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Main Admin</a>
+                <a class="nav-link" href="http://localhost:8080/main_admin">Main Admin</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/add_Klub">Add New Club</a>
+                <a class="nav-link active" aria-current="page" href="#">Add New Club</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="http://localhost:8080/showKluby">Update/Delete Club</a>
@@ -80,34 +81,55 @@
         </ul>
 
         <div class="row" style="padding-top: 20px">
+            <div align="center" style="padding-top: 20px">
+                <h1>Dodaj nowy klub</h1>
+                </br>
+                <form action="#" th:action="@{/save}" th:object="${klub}" method="post">
+                    <table border="1" cellpadding="10">
+                        <tr>
+                            <td>Numer KLubu:</td>
+                            <td><input type="text" th:field="*{nr_klubu}"></td>
+                        </tr>
+                        <tr>
+                            <td>Nazwa Klubu :</td>
+                            <td><input type="text" th:field="*{nazwa}"></td>
+                        </tr>
+                        <!-- Navigation     <tr>
+                            <td>Data Otwarcia :</td>
+                            <td><input type="text" th:field="*{data2}"></td>
+                        </tr> -->
+                        <tr>
+                            <td>Numer telefonu :</td>
+                            <td><input type="text" th:field="*{nr_telefonu}"></td>
+                        </tr>
+                        <tr>
+                            <td>Adres Email :</td>
+                            <td><input type="text" th:field="*{adres_email}"></td>
+                        </tr>
+                        <tr>
+                            <td>Nr Adresu :</td>
+                            <td><input type="text" th:field="*{nr_adresu}"></td>
+                        </tr>
 
-            <div class="col-md-10 mt-5">
-                <form method="post" th:action="@{/index}">
-                    <div class="form-group">
-                        <label style="font-size:30px" th:inline="text">Welcome <a
-                                style="color:#93c572; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
-                            to the main page!</label>
-                        <div style="font-size:20px">If you want to logout, click "Logout" button under this text.</div>
-                    </div>
 
-                    <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Logout
-                    </button>
+                        <tr>
+                            <td colspan="2"><button type="submit">Zapisz</button></td>
+                        </tr>
+                    </table>
+
                 </form>
+
             </div>
 
         </div>
 
-
-
-
-    </div>
-
-
 </div>
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/script.js}"></script>
+</div>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
 
 </body>
 </html>
+
