@@ -80,10 +80,20 @@ public class AppController{
     }
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@ModelAttribute("Kluby") Kluby kluby){
-        dao.update(kluby);
-        return "redirect:showKluby";
+        if (dao.update(kluby)==1) {
+
+            return "redirect:showKluby";
+        }
+        if (dao.update(kluby)==0){
+            return "redirect:errors/504";
+
+        }
+        else
+        return "redirect:/";
 
     }
+
+
 
     @RequestMapping("/delete/{nr_klubu}")
     public String delete(@PathVariable(name = "nr_klubu") int nr_klubu){
