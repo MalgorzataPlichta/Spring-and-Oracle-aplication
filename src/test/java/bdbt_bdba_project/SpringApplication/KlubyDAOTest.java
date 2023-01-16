@@ -22,8 +22,8 @@ class KlubyDAOTest extends Object {
     void setUp() throws Exception {
         DriverManagerDataSource datasource = new DriverManagerDataSource();
         datasource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-        datasource.setUsername("MPLICHTA1");
-        datasource.setPassword("MPLICHTA1");
+        datasource.setUsername("OKRASA7");
+        datasource.setPassword("OKRASA3");
         datasource.setDriverClassName("oracle.jdbc.OracleDriver");
 
         dao = new KlubyDAO(new JdbcTemplate(datasource));

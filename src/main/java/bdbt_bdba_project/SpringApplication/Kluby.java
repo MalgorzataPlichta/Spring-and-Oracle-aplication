@@ -8,7 +8,7 @@ import java.util.Date;
 public class Kluby {
     private int nr_klubu;
     private String nazwa;
-    private Date data_otwarcia;
+    private String data_otwarcia;
     private int nr_telefonu;
     private String adres_email;
     private int nr_adresu;
@@ -32,7 +32,7 @@ public class Kluby {
     public Kluby(int nr_klubu, String nazwa, String data_otwarcia, int nr_telefonu, String adres_email, int nr_adresu) throws ParseException {
         this.nr_klubu = nr_klubu;
         this.nazwa = nazwa;
-        this.data_otwarcia = ToDate(data_otwarcia);
+        this.data_otwarcia = data_otwarcia;
         this.nr_telefonu = nr_telefonu;
         this.adres_email = adres_email;
         this.nr_adresu = nr_adresu;
@@ -54,10 +54,10 @@ public class Kluby {
         this.nazwa = nazwa;
     }
 
-    public Date getData_otwarcia() {return data_otwarcia = new Date();
+    public String getData_otwarcia() {return data_otwarcia;
     }
 
-    public void setData_otwarcia(Date data_otwarcia) {
+    public void setData_otwarcia(String data_otwarcia) {
         this.data_otwarcia = data_otwarcia;
     }
 

@@ -12,9 +12,7 @@
 </head>
 <style>
 
-    body{
-        font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;;
-    }
+    body {font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;;}
     .navbar-custom {
         height: 75px;
         padding: 10px 50px 10px 0;
@@ -24,6 +22,104 @@
         color: #93c572;
         background-color: #004040;
     }
+
+
+
+    button:hover {
+        background-color: #e5e4e2;
+        color: black;
+    }
+
+    /* Float cancel and delete buttons and add an equal width */
+    .cancelbtn, .deletebtn {
+        float: left;
+        width: 50%;
+        font-size: 15px;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        background-color: #f9f9f9;
+
+        opacity: 0.9;
+    }
+    .del {
+        font-size: 15px;
+        color: #222222;
+        background-color: #f44336;
+        float: left;
+        width: 50%;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+
+        opacity: 0.9;
+    }
+
+
+    /* Add a color to the delete button */
+    .deletebtn {
+        background-color: #f44336;
+    }
+
+    /* Add padding and center-align text to the container */
+    .container {
+        padding: 16px;
+        text-align: center;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: #004040;
+        padding-top: 50px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #E5E4E2FF;
+        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* Style the horizontal ruler */
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    /* The Modal Close Button (x) */
+    .close {
+        position: absolute;
+        right: 35px;
+        top: 15px;
+        font-size: 40px;
+        font-weight: bold;
+        color: #f1f1f1;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #f44336;
+        cursor: pointer;
+    }
+
+    /* Clear floats */
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
 
 
 </style>
@@ -36,9 +132,6 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/" style="color: #93c572"> BDBT Spring Boot Project: Athletics Club</a>
-            <button class="navbar-toggler" style="color: #93c572" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                    aria-controls="navbarResponsive"
-                    aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
@@ -67,8 +160,7 @@
 
 <div class="bigger-cont" style="background-color: #93c572; height: 800px; ">
     <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 800px; padding-top: 25px">
-
-        <ul class="nav nav-tabs" style="color: #93c572">
+        <ul class="nav nav-tabs" style="color: #004040">
             <li class="nav-item">
                 <a class="nav-link" href="http://localhost:8080/main_admin">Main Admin</a>
             </li>
@@ -102,7 +194,22 @@
                     <td>
                         <a th:href="@{'/edit/'+ ${Kluby.nr_klubu}}">Edit</a>
                         &nbsp;&nbsp;&nbsp;
-                        <a th:href="@{'/delete/'+ ${Kluby.nr_klubu}}">Delete</a>
+                        <button onclick="document.getElementById('id01').style.display='block'">Delate</button>
+
+                        <div id="id01" class="modal">
+                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+                            <form class="modal-content" action="/action_page.php">
+                                <div class="container">
+                                    <h1>Delete Club</h1>
+                                    <p>Are you sure you want to delete this Club?</p>
+
+                                    <div class="clearfix">
+                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                        <a class="del" th:href="@{'/delete/'+ ${Kluby.nr_klubu}}">Delete</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </td>
                     <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
                 </tr>
@@ -120,6 +227,17 @@
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/script.js}"></script>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>
