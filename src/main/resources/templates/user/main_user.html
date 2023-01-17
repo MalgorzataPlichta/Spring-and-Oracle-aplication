@@ -82,10 +82,50 @@
                     </button>
                 </form>
             </div>
+            <div class="row" style="padding-top: 20px">
+                <div align="center" style="padding-top: 20px">
+
+                    </br>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Club number</th>
+                            <th scope="col">Surname</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Accound number</th>
+                            <th scope="col">PESEL</th>
+                            <th scope="col">DAte</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr th:each = "Zawodnicy : ${zawodnicyList}">
+                            <td th:text= "${Zawodnicy.nr_klubu}">Numer klubu</td>
+                            <td th:text = "${Zawodnicy.nazwisko}">Zazwisko</td>
+                            <td th:text = "${Zawodnicy.imie}">Imię</td>
+                            <td th:text = "${Zawodnicy.nr_konta}">Numer telefonu</td>
+                            <td th:text = "${Zawodnicy.pesel}">PESEL</td>
+                            <td th:text = "${Zawodnicy.data_dolaczenia}">data_dolaczenia</td>
+
+                            <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
+
+
+
+
 
 
 </div>

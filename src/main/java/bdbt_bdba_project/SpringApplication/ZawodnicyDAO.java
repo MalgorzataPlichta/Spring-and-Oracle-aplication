@@ -22,8 +22,8 @@ public class ZawodnicyDAO {
         this.jdbcTemplate1 = jdbcTemplate;
     }
 
-    public List<Zawodnicy> list() {
-        String sql = "SELECT * FROM ZAWODNICY";
+    public List<Zawodnicy> list(int name) {
+        String sql = "SELECT * FROM ZAWODNICY WHERE NR_ZAWODNIKA = "+ name;
         List<Zawodnicy> listZawodnicy = jdbcTemplate1.query(sql,
                 BeanPropertyRowMapper.newInstance(Zawodnicy.class));
         return listZawodnicy;

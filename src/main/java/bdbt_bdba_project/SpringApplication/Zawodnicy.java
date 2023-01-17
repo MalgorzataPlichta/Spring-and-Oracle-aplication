@@ -6,15 +6,15 @@ import java.util.Date;
 
 public class Zawodnicy {
     private int nr_zawodnika;
-    private Date data_dolaczenia;
+    private String data_dolaczenia;
     private String nazwisko;
     private String imie;
-    private Date data_urodzenia;
+    private String data_urodzenia;
     private long pesel;
     private long nr_konta;
     private int nr_klubu;
 
-    public Zawodnicy(int nr_zawodnika, Date data_dolaczenia, String nazwisko, String imie, Date data_urodzenia, long pesel, long nr_konta, int nr_klubu) {
+    public Zawodnicy(int nr_zawodnika, String data_dolaczenia, String nazwisko, String imie, String data_urodzenia, long pesel, long nr_konta, int nr_klubu) {
         this.nr_zawodnika = nr_zawodnika;
         this.data_dolaczenia = data_dolaczenia;
         this.nazwisko = nazwisko;
@@ -33,7 +33,7 @@ public class Zawodnicy {
         this.nr_zawodnika = nr_zawodnika;
     }
 
-    public void setData_dolaczenia(Date data_dolaczenia) {
+    public void setData_dolaczenia(String data_dolaczenia) {
         this.data_dolaczenia = data_dolaczenia;
     }
 
@@ -45,7 +45,7 @@ public class Zawodnicy {
         this.imie = imie;
     }
 
-    public void setData_urodzenia(Date data_urodzenia) {
+    public void setData_urodzenia(String data_urodzenia) {
         this.data_urodzenia = data_urodzenia;
     }
 
@@ -65,7 +65,7 @@ public class Zawodnicy {
         return nr_zawodnika;
     }
 
-    public Date getData_dolaczenia() {
+    public String getData_dolaczenia() {
         return data_dolaczenia;
     }
 
@@ -77,7 +77,7 @@ public class Zawodnicy {
         return imie;
     }
 
-    public Date getData_urodzenia() {
+    public String getData_urodzenia() {
         return data_urodzenia;
     }
 
