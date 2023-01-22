@@ -30,65 +30,10 @@
         color: black;
     }
 
-    /* Float cancel and delete buttons and add an equal width */
-    .cancelbtn, .deletebtn {
-        float: left;
-        width: 50%;
-        font-size: 15px;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        background-color: #f9f9f9;
-
-        opacity: 0.9;
-    }
-    .del {
-        font-size: 15px;
-        color: #222222;
-        background-color: #f44336;
-        float: left;
-        width: 50%;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-
-        opacity: 0.9;
-    }
-
-
-    /* Add a color to the delete button */
-    .deletebtn {
-        background-color: #f44336;
-    }
-
     /* Add padding and center-align text to the container */
     .container {
         padding: 16px;
         text-align: center;
-    }
-
-    /* The Modal (background) */
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: #004040;
-        padding-top: 50px;
-    }
-
-    /* Modal Content/Box */
-    .modal-content {
-        background-color: #E5E4E2FF;
-        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-        border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
     }
 
     /* Style the horizontal ruler */
@@ -97,31 +42,9 @@
         margin-bottom: 25px;
     }
 
-    /* The Modal Close Button (x) */
-    .close {
-        position: absolute;
-        right: 35px;
-        top: 15px;
-        font-size: 40px;
-        font-weight: bold;
-        color: #f1f1f1;
+    .table{
+        text-align: left;
     }
-
-    .close:hover,
-    .close:focus {
-        color: #f44336;
-        cursor: pointer;
-    }
-
-    /* Clear floats */
-    .clearfix::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
-
-
-
 </style>
 <body>
 
@@ -161,14 +84,17 @@
 <div class="bigger-cont" style="background-color: #93c572; height: 800px; ">
     <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 800px; padding-top: 25px">
         <ul class="nav nav-tabs" style="color: #004040">
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/main_admin">Main Admin</a>
+            <li class="nav-item" style="color: #004040">
+                <a class="nav-link" href="http://localhost:8080/main_admin" style="color: #004040">Main Admin</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/add_Klub">Add New Club</a>
+            <li class="nav-item" style="color: #004040">
+                <a class="nav-link" href="http://localhost:8080/add_Klub" style="color: #004040">Add New Club</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Update/Delete Club</a>
+            <li class="nav-item" style="color: #004040">
+                <a class="nav-link" href="http://localhost:8080/add_Klub" style="color: #004040">Update/Delete Club</a>
+            </li>
+            <li class="nav-item" style="color: #004040">
+                <a class="nav-link active" aria-current="page" href="#" style="color: #004040">Show Users</a>
             </li>
         </ul>
 

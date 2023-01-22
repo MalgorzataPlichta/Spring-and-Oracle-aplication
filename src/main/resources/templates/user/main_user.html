@@ -49,6 +49,7 @@
         touch-action: manipulation;
         vertical-align: baseline;
         width: auto;
+        text-align: left;
     }
 
     .btn:hover,
@@ -68,11 +69,6 @@
         box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
         color: rgb(229,228,226);
         transform: translateY(0);
-    }
-    body{
-        color: #1a202c;
-        text-align: left;
-        background-color: #e2e8f0;
     }
 
     .card {
@@ -98,7 +94,7 @@
     }
 
     .card-body .row{
-        height: 10px;
+        height: 15px;
     }
 
     .gutters-sm {
@@ -174,8 +170,12 @@
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="https://cdn3.iconfinder.com/data/icons/pretty-office-part-8-simple-style/256/User-green.png" alt="Admin" class="rounded-circle" width="150">
+                                <tr th:each = "Zawodnicy : ${zawodnicyList}">
                                 <div class="mt-3">
-                                    <h4>John Doe</h4>
+                                    <h3>
+                                    <td th:text = "${Zawodnicy.imie}">Imię</td>
+                                    <td th:text = "${Zawodnicy.nazwisko}">Nazwisko</td>
+                                    </h3>
                                 </div>
                             </div>
                         </div>
@@ -187,79 +187,92 @@
                                     <div class="form-group">
                                         <div style="font-size:20px">If you want to logout, click "Logout" button under this text.</div>
                                     </div>
-
                                     <button class="btn"  type="submit" value="Sign Out" onclick="successfullyLogout()">Logout</button>
                                 </form>
                             </li>
-
                         </ul>
                     </div>
                 </div>
+                <tr th:each = "Zawodnicy : ${zawodnicyList}">
                 <div class="col-md-8"  style="border-radius: 1.25rem;">
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Full Name</h6>
+                                    <h6 class="mb-0">User ID</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    Kenneth Valdez
+                                    <p><td th:text = "${Zawodnicy.nr_zawodnika}">User ID</td></p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Email</h6>
+                                    <h6 class="mb-0">Name</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    fip@jukmuh.al
+                                    <p><td th:text = "${Zawodnicy.imie}">Imię</td></p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Phone</h6>
+                                    <h6 class="mb-0">Surname</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    (239) 816-9029
+                                    <p><td th:text = "${Zawodnicy.nazwisko}">Nazwisko</td></p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Mobile</h6>
+                                    <h6 class="mb-0">PESEL</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    (320) 380-4539
+                                    <p><td th:text = "${Zawodnicy.pesel}">PESEL</td></p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Address</h6>
+                                    <h6 class="mb-0">Birth Date</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    Bay Area, San Francisco, CA
+                                    <p><td th:text = "${Zawodnicy.data_urodzenia}">Birth Date</td></p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-sm-12">
-                                    <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Join Date</h6>
                                 </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <p><td th:text = "${Zawodnicy.data_dolaczenia}">Join Date</td></p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Bank Account Number</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <p><td th:text = "${Zawodnicy.nr_konta}">Bank Account Number</td></p>
+                                </div>
+                            </div>
+                            <hr>
+
+
+
+                            <div class="col-md-2">
+                                <a href="editUserData">
+                                    <button class="btn" name="btnAddMore" value="EditProfile">Edit Profile</button>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
         </div>
-
-
-
-
     </div>
-
-
 </div>
 
 </div>

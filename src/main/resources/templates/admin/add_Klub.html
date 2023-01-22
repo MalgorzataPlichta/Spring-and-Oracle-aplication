@@ -26,6 +26,54 @@
         background-color: #004040;
     }
 
+    .btn{
+        align-items: center;
+        background-color: #004040;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: .25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: rgb(229,228,226);
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 3rem;
+        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        width: auto;
+        text-align: left;
+    }
+
+    .btn:hover,
+    .btn:focus {
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        color: rgb(229,228,226);
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+    .btn:active {
+        background-color: #F0F0F1;
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+        color: rgb(229,228,226);
+        transform: translateY(0);
+    }
+
 
 </style>
 <body>
@@ -68,52 +116,46 @@
 
 <div class="bigger-cont" style="background-color: #93c572; height: 800px; ">
     <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 800px; padding-top: 25px">
-        <ul class="nav nav-tabs" style="color: #93c572">
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/main_admin">Main Admin</a>
+        <ul class="nav nav-tabs" style="color: #004040">
+            <li class="nav-item"  style="color: #004040">
+                <a class="nav-link" href="http://localhost:8080/main_admin" style="color: #004040">Main Admin</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Add New Club</a>
+            <li class="nav-item"  style="color: #004040" >
+                <a class="nav-link active" aria-current="page" href="#" style="color: #004040">Add New Club</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/showKluby">Update/Delete Club</a>
+            <li class="nav-item"  style="color: #004040">
+                <a class="nav-link" href="http://localhost:8080/showKluby" style="color: #004040">Update/Delete Club</a>
+            </li>
+            <li class="nav-item" style="color: #004040">
+                <a class="nav-link" href="http://localhost:8080/showUsers" style="color: #004040">Show Users</a>
             </li>
         </ul>
 
         <div class="row" style="padding-top: 20px">
             <div align="center" style="padding-top: 20px">
-                <h1>Dodaj nowy klub</h1>
+                <h1 style="color: #004040">Add New Club</h1>
                 </br>
                 <form action="#" th:action="@{/save}" th:object="${klub}" method="post">
-                    <table border="1" cellpadding="10">
+
+                    <table border="1" cellpadding="10" style="color: #004040">
                         <tr>
-                            <td>Numer KLubu:</td>
+                            <td>Club Number</td>
                             <td><input type="text" th:field="*{nr_klubu}"></td>
                         </tr>
                         <tr>
-                            <td>Nazwa Klubu :</td>
+                            <td>Club Name</td>
                             <td><input type="text" th:field="*{nazwa}"></td>
                         </tr>
-                        <!-- Navigation     <tr>
-                            <td>Data Otwarcia :</td>
-                            <td><input type="text" th:field="*{data2}"></td>
-                        </tr> -->
                         <tr>
-                            <td>Numer telefonu :</td>
+                            <td>Phone number</td>
                             <td><input type="text" th:field="*{nr_telefonu}"></td>
                         </tr>
                         <tr>
-                            <td>Adres Email :</td>
+                            <td>Mail adress</td>
                             <td><input type="text" th:field="*{adres_email}"></td>
                         </tr>
-                        <tr>
-                            <td>Nr Adresu :</td>
-                            <td><input type="text" th:field="*{nr_adresu}"></td>
-                        </tr>
-
-
-                        <tr>
-                            <td colspan="2"><button type="submit">Zapisz</button></td>
+                        <tr style="text-align: center">
+                            <td colspan="2"><button class="btn" type="submit">Save</button></td>
                         </tr>
                     </table>
 
