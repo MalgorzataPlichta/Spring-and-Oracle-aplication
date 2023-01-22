@@ -43,7 +43,7 @@ class KlubyDAOTest extends Object {
 
     @Test
     void testGet() {
-        int nr_klubu = 5;
+        int nr_klubu = 1;
         Kluby kluby = dao.get(nr_klubu);
         assertNotNull(kluby);
     }

@@ -11,10 +11,10 @@ public class Zawodnicy {
     private String imie;
     private String data_urodzenia;
     private long pesel;
-    private long nr_konta;
+    private String nr_konta;
     private int nr_klubu;
 
-    public Zawodnicy(int nr_zawodnika, String data_dolaczenia, String nazwisko, String imie, String data_urodzenia, long pesel, long nr_konta, int nr_klubu) {
+    public Zawodnicy(int nr_zawodnika, String data_dolaczenia, String nazwisko, String imie, String data_urodzenia, long pesel, String nr_konta, int nr_klubu) {
         this.nr_zawodnika = nr_zawodnika;
         this.data_dolaczenia = data_dolaczenia;
         this.nazwisko = nazwisko;
@@ -53,7 +53,7 @@ public class Zawodnicy {
         this.pesel = pesel;
     }
 
-    public void setNr_konta(long nr_konta) {
+    public void setNr_konta(String nr_konta) {
         this.nr_konta = nr_konta;
     }
 
@@ -85,7 +85,7 @@ public class Zawodnicy {
         return pesel;
     }
 
-    public long getNr_konta() {
+    public String getNr_konta() {
         return nr_konta;
     }
 

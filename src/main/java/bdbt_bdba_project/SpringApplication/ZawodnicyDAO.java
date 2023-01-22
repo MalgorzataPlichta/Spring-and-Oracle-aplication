@@ -28,13 +28,32 @@ public class ZawodnicyDAO {
                 BeanPropertyRowMapper.newInstance(Zawodnicy.class));
         return listZawodnicy;
     }
-    //httpServletRequest.remoteUser
-    public Zawodnicy getZ(int nr_zawodnika){
+    public List<Zawodnicy> allList() {
+        String sql = "SELECT * FROM ZAWODNICY ";
+        List<Zawodnicy> listZawodnicy = jdbcTemplate1.query(sql,
+                BeanPropertyRowMapper.newInstance(Zawodnicy.class));
+        return listZawodnicy;
+    }
+    /* Update – aktualizacja danych */
+    public void update2(Zawodnicy zawodnicy) {
+        String sql = "UPDATE ZAWODNICY SET NR_ZAWODNIKA=:nr_zawodnika, DATA_DOLACZENIA=:data_dolaczenia, NAZWISKO=:nazwisko, IMIE=:imie, DATA_URODZENIA=:data_urodzenia, PESEL=:pesel, NR_KONTA=:nr_konta WHERE NR_ZAWODNIKA=:nr_zawodnika";
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(zawodnicy);
+        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate1);
+        template.update(sql,param);
+    }
 
-        String sql = "SELECT * FROM ZAWODNICY WHERE NR_ZAWODNIKA = ?";
-        Object[] args = {nr_zawodnika};
-        Zawodnicy zawodnicy = jdbcTemplate1.queryForObject(sql, args, BeanPropertyRowMapper.newInstance(Zawodnicy.class));
-        System.out.println(zawodnicy);
+
+    public void save2(Zawodnicy zawodnicy) {
+        SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate1);
+        insertActor.withTableName("zawodnicy").usingColumns("nr_zawodnika","data_dolaczenia", "nazwisko","imie", "data_urodzenia","pesel", "nr_konta","nr_klubu");
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(zawodnicy);
+        insertActor.execute(param);
+
+    }
+    /* Read – odczytywanie danych z bazy */
+    public Zawodnicy get2(int nr_zawodnika) {
+        String sql = "SELECT * FROM ZAWODNICY WHERE NR_ZAWODNIKA = " +nr_zawodnika;
+        Zawodnicy zawodnicy = jdbcTemplate1.queryForObject(sql, BeanPropertyRowMapper.newInstance(Zawodnicy.class));
         return zawodnicy;
     }
 }

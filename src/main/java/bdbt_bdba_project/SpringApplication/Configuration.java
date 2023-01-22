@@ -17,6 +17,8 @@ public class Configuration implements WebMvcConfigurer {
         registry.addViewController("/add_Klub").setViewName("admin/add_Klub");
         registry.addViewController("/showKluby").setViewName("admin/showKluby");
         registry.addViewController("/editKluby").setViewName("admin/editKluby");
+        registry.addViewController("/editUserData").setViewName("user/editUserData");
+        registry.addViewController("/showUsers").setViewName("admin/showUsers");
     }
 
 }

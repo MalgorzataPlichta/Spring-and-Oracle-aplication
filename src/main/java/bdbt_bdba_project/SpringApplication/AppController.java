@@ -1,18 +1,17 @@
 package bdbt_bdba_project.SpringApplication;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
-import java.util.Map;
+
 
 @Controller
 public class AppController{
@@ -62,6 +61,19 @@ public class AppController{
         model.addAttribute("klubyList",klubyList);
         return "admin/showKluby";
     }
+
+    @RequestMapping("/showUsers")
+    public String viewAdminUsers(Model model){
+        List<Zawodnicy> zawodnicyList= dao1.allList();
+        model.addAttribute("zawodnicyList",zawodnicyList);
+        return "admin/showUsers";
+    }
+    @RequestMapping("/delete/{nr_klubu}")
+    public String delete(@PathVariable(name = "nr_klubu") int nr_klubu){
+        dao.delete(nr_klubu);
+
+        return "redirect:/";
+    }
     @RequestMapping("/add_Klub")
     public String vievAdminAddingPanel(Model model){
         Kluby klub =new Kluby();
@@ -71,7 +83,7 @@ public class AppController{
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute("klub")Kluby klub){
         dao.save(klub);
-        return "/";
+        return "admin/add_Klub";
     }
     @RequestMapping("/edit/{nr_klubu}")
     public ModelAndView showEditForm(@PathVariable(name = "nr_klubu")int nr_klubu){
@@ -80,12 +92,23 @@ public class AppController{
         mav.addObject("kluby",kluby);
         return mav;
     }
-    @RequestMapping("/main_user/{nr_zawodnika}")
-    public ModelAndView showUserData(@PathVariable(name = "nr_zawodnika")int nr_zawodnika){
-        ModelAndView mav = new ModelAndView("user/main_user");
-        Zawodnicy zawodnicy = dao1.getZ(nr_zawodnika);
-        mav.addObject("zawodnicy",zawodnicy);
-        return mav;
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update1(@ModelAttribute("Kluby") Kluby kluby){
+        dao.update(kluby);
+        return "redirect:showKluby";
+
+    }
+
+    @RequestMapping(value = "/update2", method = RequestMethod.POST)
+    public String update3(@ModelAttribute("Zawodnicy") Zawodnicy zawodnicy){
+        dao1.update2(zawodnicy);
+        return "redirect:main_user";
+
+    }
+    @RequestMapping(value = "/save2", method = RequestMethod.POST)
+    public String save(@ModelAttribute("zawodnicy")Zawodnicy zawodnicy){
+        dao1.save2(zawodnicy);
+        return "/";
     }
 
     @RequestMapping(value = "/main_user")
@@ -97,33 +120,14 @@ public class AppController{
         return "user/main_user";
     }
 
-
-
-
-
-
-
-
-
-
-
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@ModelAttribute("Kluby") Kluby kluby){
-        dao.update(kluby);
-        return "redirect:showKluby";
-
-    }
-
-    @RequestMapping("/delete/{nr_klubu}")
-    public String delete(@PathVariable(name = "nr_klubu") int nr_klubu){
-        dao.delete(nr_klubu);
-
-        return "redirect:/";
-    }
-
-    @RequestMapping("/about")
-    public String viewPage(){
-        return "about";
+    @RequestMapping("/editUserData")
+    public ModelAndView updateUserData(Principal principal){
+        String name = principal.getName();
+        int name1 = Integer.parseInt(name);
+        ModelAndView mav = new ModelAndView("user/editUserData");
+        Zawodnicy zawodnicy = dao1.get2(name1);
+        mav.addObject("zawodnicy",zawodnicy);
+        return mav;
     }
 
 

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Main Admin Page</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+<style>
+
+  body{
+    font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;;
+  }
+  .navbar-custom {
+    height: 75px;
+    padding: 10px 50px 10px 0;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+
+    color: #93c572;
+    background-color: #004040;
+  }
+
+
+</style>
+<body>
+
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/" style="color: #93c572"> BDBT Spring Boot Project: Athletics Club</a>
+      <button class="navbar-toggler" style="color: #93c572" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+              aria-controls="navbarResponsive"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="nav-item" >
+        <a class="nav-link" th:href="@{/index}">Home
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/main}">Main</a>
+      </li>
+
+
+
+    </ul>
+    <li class="nav-item" style="text-align: right; font-size: 20px; margin: 10px 10px; list-style: none">
+      <a class="nav-link" th:inline="text" style="color:#93c572;">You are logged in as <b
+              style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+    </li>
+  </div>
+
+</nav>
+
+
+
+<div class="bigger-cont" style="background-color: #93c572; height: 800px; ">
+  <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 800px; padding-top: 25px">
+    <ul class="nav nav-tabs" style="color: #93c572">
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:8080/main_admin">Main Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Add New Club</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:8080/showKluby">Update/Delete Club</a>
+      </li>
+    </ul>
+
+
+    <div class="row" style="padding-top: 20px">
+      <div align="center" style="padding-top: 20px">
+        <h1>Edit Club</h1>
+        </br>
+        <form action="#" th:action="@{/update2}" th:object="${zawodnicy}" method="post">
+          <table border="1" cellpadding="10">
+            <tr>
+              <td>Numer KLubu:</td>
+              <td><input type="text" th:field="*{nr_zawodnika}" readonly="readonly"></td>
+            </tr>
+            <tr>
+              <td>Data dołączenia:</td>
+              <td><input type="text" th:field="*{data_dolaczenia}"></td>
+            </tr>
+            <tr>
+              <td>Imię:</td>
+              <td><input type="text" th:field="*{imie}"></td>
+            </tr>
+
+            <td>Nazwisko:</td>
+            <td><input type="text" th:field="*{nazwisko}"></td>
+            </tr>
+            <tr>
+              <td>Pesel :</td>
+              <td><input type="text" th:field="*{pesel}"></td>
+            </tr>
+            <tr>
+              <td>Nr Konta :</td>
+              <td><input type="text" th:field="*{nr_konta}"></td>
+            </tr>
+            <tr>
+              <td>Nr Klubu:</td>
+              <td><input type="text" th:field="*{nr_klubu}"></td>
+            </tr>
+            <tr>
+              <td>Data urodzenia:</td>
+              <td><input type="text" th:field="*{data_urodzenia}"></td>
+            </tr>
+
+
+
+            <tr>
+              <td colspan="2"><button type="submit">Zapisz</button></td>
+            </tr>
+          </table>
+
+        </form>
+
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>
+
