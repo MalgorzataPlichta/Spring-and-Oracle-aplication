@@ -3,35 +3,139 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Error Page</title>
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
-<body>
+
+<style>
+
+    body{
+        font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;;
+    }
+    .navbar-custom {
+        height: 75px;
+        padding: 10px 50px 10px 0;
+        margin-bottom: 0;
+        letter-spacing: 1px;
+
+        color: #93c572;
+        background-color: #004040;
+    }
+
+    img {
+        width: 80%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .row{
+        display: flex;
+    }
+
+
+    .nav , .bigger-cont{
+        letter-spacing: 1px;
+    }
+
+    .btn{
+        align-items: center;
+        background-color: #004040;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: .25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: rgb(229,228,226);
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 3rem;
+        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        width: auto;
+    }
+
+    .btn:hover,
+    .btn:focus {
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        color: rgb(229,228,226);
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+    .btn:active {
+        background-color: #F0F0F1;
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+        color: rgb(229,228,226);
+        transform: translateY(0);
+    }
+
+
+</style>
+
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">BDBT Spring Boot Project - Part II</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar navbar-inverse navbar-custom" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="color: #93c572"> BDBT Spring Boot Project: Athletics Club</a>
+        </div>
+
+        <ul class="nav navbar-nav">
+        </ul>
+
     </div>
 </nav>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 mt-5">
-            <form method="post" th:action="@{/}">
-                <div class="form-group">
-                    <div><b><p style="font-size:30px">Error</p></b></div>
-                    <div><p style="font-size:24px">504 – Gateway Timeout</p></div>
-                </div>
-                <button class="btn btn-primary" type="submit" value="Sign In">Back to home page</button>
-            </form>
+
+
+<!--Using images in page    -->
+<!-- <img th:src="@{/assets/img/img.png}" alt="Image" class="img-fluid"> -->
+
+<br>
+<br>
+
+<div class="bigger-cont" style="background-color: #93c572; height:800px" >
+    <div class="container" style=" background-color: rgb(229,228,226); height:800px; padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div class="row" style="height: 500px">
+
+            <div class="col-md-4 mt-5">
+                <form method="post" th:action="@{/}">
+                    <div class="form-group">
+                        <div><b><p style="font-size:30px">Error</p></b></div>
+                        <div><p style="font-size:24px">504 – Gateway Timeout</p></div>
+                    </div>
+                    <button class="btn" type="submit" value="Sign In">Back to home page</button>
+                </form>
+            </div>
+
+
         </div>
     </div>
 </div>
+
+</div>
+
+
+
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
 </body>
 </html>

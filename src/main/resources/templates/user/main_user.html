@@ -9,6 +9,10 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 </head>
 <style>
 
@@ -80,13 +84,8 @@
         font-size: 15px;
         font-weight: 600;
     }
-    .profile-head .nav-tabs{
-        margin-bottom:5%;
-    }
-    .profile-head .nav-tabs .nav-link{
-        font-weight:600;
-        border: none;
-    }
+
+
     .profile-head .nav-tabs .nav-link.active{
         border: none;
         border-bottom:2px solid #004040;
@@ -120,13 +119,57 @@
     tr.yellow td{
         background-color: #F0F0F1;
     }
+    .btn{
+        align-items: center;
+        background-color: #004040;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: .25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: rgb(229,228,226);
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 3rem;
+        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        width: auto;
+    }
+
+    .btn:hover,
+    .btn:focus {
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        color: rgb(229,228,226);
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+    .btn:active {
+        background-color: #F0F0F1;
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+        color: rgb(229,228,226);
+        transform: translateY(0);
+    }
 
 </style>
 <body>
 
 
-
-<!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-custom">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -155,13 +198,28 @@
                     style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
         </li>
     </div>
+
 </nav>
+
 
 
 
 <div class="bigger-cont" style="background-color: #93c572; height: 800px" >
     <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 800px">
         <div class="row">
+
+            <div class="col-md-10 mt-5">
+                <form method="post" th:action="@{/index}">
+                    <div class="form-group">
+                        <label style="font-size:30px" th:inline="text">Welcome <a
+                                style="color:#93c572; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
+                            to the main page!</label>
+                        <div style="font-size:20px">If you want to logout, click "Logout" button under this text.</div>
+                    </div>
+
+                    <button class="btn"  type="submit" value="Sign Out" onclick="successfullyLogout()">Logout</button>
+                </form>
+            </div>
 
             <div class="container emp-profile">
                 <form method="post">
@@ -187,7 +245,9 @@
                             <br>
                             <br>
                         <div class="col-md-2">
-                            <a href="editUserData"><input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/></a>
+                           <a href="editUserData">
+                            <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                               </a>
                         </div>
                             <br>
                             <br>
