@@ -146,8 +146,4 @@ public class AppController{
    // public String showAddingPanel(Model model) {
      //   return "admin/add_Klub";
    // }
-
-
-
-
 }
