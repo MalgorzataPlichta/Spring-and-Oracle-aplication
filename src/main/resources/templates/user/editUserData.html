@@ -247,16 +247,16 @@
         <input id="name" type="text" th:field="*{nr_zawodnika}" readonly="readonly">
 
         <label for="name">Name</label>
-        <input type="text" th:field="*{imie}">
+        <input type="text" th:field="*{imie}" required>
 
         <label for="name">Surname</label>
-        <input  type="text" th:field="*{nazwisko}">
+        <input  type="text" th:field="*{nazwisko}" required>
 
         <label for="name">PESEL</label>
         <input type="text"   th:field="*{pesel}" title="11 numbers id" pattern="[0-9]{11}" required placeholder="11 number code">
 
         <label for="name">Birth Date</label>
-        <input type="date" th:field="*{data_urodzenia}">
+        <input type="date" th:field="*{data_urodzenia}" required>
 
         <label for="name">Join Date</label>
         <input  type="date" th:field="*{data_dolaczenia}">

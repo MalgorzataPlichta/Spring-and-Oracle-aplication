@@ -1,49 +1,77 @@
-
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Main Admin Page</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <style>
 
-    body{
-        font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;;
-    }
     body {font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;;}
     .navbar-custom {
         height: 75px;
         padding: 10px 50px 10px 0;
         margin-bottom: 0;
         letter-spacing: 1px;
+
         color: #93c572;
         background-color: #004040;
     }
 
-
-
-    button:hover {
-        background-color: #e5e4e2;
-        color: black;
-    }
-
-    /* Float cancel and delete buttons and add an equal width */
-    .cancelbtn, .deletebtn {
-        float: left;
-        width: 50%;
-        font-size: 15px;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
+    .btn{
+        align-items: center;
+        background-color: #004040;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: .25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: rgb(229,228,226);
         cursor: pointer;
-        background-color: #f9f9f9;
-
-        opacity: 0.9;
+        display: inline-flex;
+        font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 3rem;
+        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        width: auto;
+        text-align: left;
     }
+
+    .btn:hover,
+    .btn:focus {
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        color: rgb(229,228,226);
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+    .btn:active {
+        background-color: #F0F0F1;
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+        color: rgb(229,228,226);
+        transform: translateY(0);
+    }
+
+
     .del {
         font-size: 15px;
         color: #222222;
@@ -58,11 +86,6 @@
         opacity: 0.9;
     }
 
-
-    /* Add a color to the delete button */
-    .deletebtn {
-        background-color: #f44336;
-    }
 
     /* Add padding and center-align text to the container */
     .container {
@@ -98,27 +121,14 @@
         margin-bottom: 25px;
     }
 
-    /* The Modal Close Button (x) */
-    .close {
-        position: absolute;
-        right: 35px;
-        top: 15px;
-        font-size: 40px;
-        font-weight: bold;
-        color: #f1f1f1;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #f44336;
-        cursor: pointer;
-    }
-
-    /* Clear floats */
     .clearfix::after {
         content: "";
         clear: both;
         display: table;
+    }
+
+    .table {
+        text-align: left;
     }
 
 
@@ -126,15 +136,14 @@
 </style>
 <body>
 
+
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-custom">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/" style="color: #93c572"> BDBT Spring Boot Project: Athletics Club</a>
-            <button class="navbar-toggler" style="color: #93c572" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                    aria-controls="navbarResponsive"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
             </button>
         </div>
         <ul class="nav navbar-nav">
@@ -142,75 +151,97 @@
                 <a class="nav-link" th:href="@{/index}">Home
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/main}">Main</a>
             </li>
+
+
+
         </ul>
         <li class="nav-item" style="text-align: right; font-size: 20px; margin: 10px 10px; list-style: none">
             <a class="nav-link" th:inline="text" style="color:#93c572;">You are logged in as <b
                     style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
         </li>
     </div>
+
 </nav>
+
+
 
 <div class="bigger-cont" style="background-color: #93c572; height: 800px; ">
     <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 800px; padding-top: 25px">
+        <ul class="nav nav-tabs" style="color: #004040">
+            <li class="nav-item" style="color: #004040">
+                <a class="nav-link" href="http://localhost:8080/main_admin" style="color: #004040">Main Admin</a>
+            </li>
+            <li class="nav-item" style="color: #004040">
+                <a class="nav-link" href="http://localhost:8080/add_Klub" style="color: #004040">Add New Club</a>
+            </li>
+            <li class="nav-item" style="color: #004040">
+                <a class="nav-link active" aria-current="page" href="#" style="color: #004040">Update/Delete Club</a>
+            </li>
+            <li class="nav-item" style="color: #004040">
+                <a class="nav-link" href="http://localhost:8080/showUsers" style="color: #004040">Show Users</a>
+            </li>
+        </ul>
 
-        <ul class="nav nav-tabs" style="color: #93c572">
-            <ul class="nav nav-tabs" style="color: #004040">
-                <li class="nav-item">
-                    <a class="nav-link" href="http://localhost:8080/main_admin">Main Admin</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://localhost:8080/add_Klub">Add New Club</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Update/Delete Club</a>
-                </li>
-            </ul>
-            <div class="row" style="padding-top: 20px">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">Club number</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Date opened</th>
-                        <th scope="col">Phone number</th>
-                        <th scope="col">Mail address</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each = "Kluby : ${klubyList}">
-                        <td th:text = "${Kluby.nr_klubu}">Numer klubu</td>
-                        <td th:text = "${Kluby.nazwa}">Nazwa</td>
-                        <td th:text = "${Kluby.data_otwarcia}">Data otwarcia</td>
-                        <td th:text = "${Kluby.nr_telefonu}">Numer telefonu</td>
-                        <td th:text = "${Kluby.adres_email}">Adres mail</td>
-                        <td> <a th:href="@{'/edit/'+ ${Kluby.nr_klubu}}">Edit</a> </td>
-                        <td> <a th:href="@{'/delete/'+ ${Kluby.nr_klubu}}">Delete</a> </td>
-                            <button onclick="document.getElementById('id01').style.display='block'">Delate</button>
+        <div class="row" style="padding-top: 20px">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Club number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date opened</th>
+                    <th scope="col">Phone number</th>
+                    <th scope="col">Mail address</th>
+                </tr>
+                </thead>
+                <tbody>
 
-                            <div id="id01" class="modal">
-                                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                                <form class="modal-content" action="/action_page.php">
-                                    <div class="container">
-                                        <h1>Delete Club</h1>
-                                        <p>Are you sure you want to delete this Club?</p>
+                <tr th:each = "Kluby : ${klubyList}">
+                    <td th:text = "${Kluby.nr_klubu}">Numer klubu</td>
+                    <td th:text = "${Kluby.nazwa}">Nazwa</td>
+                    <td th:text = "${Kluby.data_otwarcia}">Data otwarcia</td>
+                    <td th:text = "${Kluby.nr_telefonu}">Numer telefonu</td>
+                    <td th:text = "${Kluby.adres_email}">Adres mail</td>
+                    <td>
 
-                                        <div class="clearfix">
-                                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                            <a class="del" th:href="@{'/delete/'+ ${Kluby.nr_klubu}}">Delete</a>
-                                        </div>
-                                    </div>
-                                </form>
+                        <a class="btn" th:href="@{'/edit/'+ ${Kluby.nr_klubu}}">Edit</a>
+                        &nbsp;&nbsp;&nbsp;
+
+                        <button onclick="document.getElementById('id01').style.display='block'" class="btn">Delate</button>
+
+                        <div id="id01" class="modal">
+                            <div class="clearfix">
+                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn" title="Close Modal">x</button>
+                                <a class="del" th:href="@{'/delete/'+ ${Kluby.nr_klubu}}">Delete</a>
                             </div>
-                        </td>
-                        <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+                            <span onclick="document.getElementById('id01').style.display='none'" class="btn" title="Close Modal">×</span>
+                            <form class="modal-content" action="/action_page.php">
+                                <div class="container">
+                                    <h1>Delete Club</h1>
+                                    <p>Are you sure you want to delete this Club?</p>
+
+                                    <div class="clearfix">
+                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn">Cancel</button>
+                                        <a class="del" th:href="@{'/delete/'+ ${Kluby.nr_klubu}}">Delete</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </td>
+                    <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
     </div>
+
+
 </div>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
