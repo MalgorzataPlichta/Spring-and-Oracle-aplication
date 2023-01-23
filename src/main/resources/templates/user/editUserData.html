@@ -125,13 +125,6 @@
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     margin-bottom: 30px;
   }
-  input:valid {
-      background-color: #b4e7b4;
-  }
-
-  input:invalid {
-      background-color: lightpink;
-  }
 
 
 
@@ -238,32 +231,29 @@
   <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 1010px; padding-top: 25px">
 
     <form action="#" th:action="@{/update2}" th:object="${zawodnicy}" method="post">
+      <h1><legend> Edit your data</legend></h1>
 
-
-
-        <h1><legend> Edit your data</legend></h1>
         <label for="name">User ID</label>
-
         <input id="name" type="text" th:field="*{nr_zawodnika}" readonly="readonly">
 
         <label for="name">Name</label>
         <input type="text" th:field="*{imie}">
 
-        <label for="name">Surname:</label>
+        <label for="name">Surname</label>
         <input  type="text" th:field="*{nazwisko}">
 
         <label for="name">PESEL</label>
-        <input type="text"   th:field="*{pesel}" title="11 numbers id" pattern="[0-9]{11}" required placeholder="11 number code">
+        <input type="number" th:field="*{pesel}">
 
         <label for="name">Birth Date</label>
         <input type="date" th:field="*{data_urodzenia}">
 
         <label for="name">Join Date</label>
-        <input  type="date" th:field="*{data_dolaczenia}">
+        <input nput type="date" th:field="*{data_dolaczenia}">
 
 
         <label for="name">Bank Account Number:</label>
-        <input type="text" th:field="*{nr_konta}"  pattern="[0-9]{26}" title="26 numbers" required>
+        <input type="text" th:field="*{nr_konta}">
 
 
 
