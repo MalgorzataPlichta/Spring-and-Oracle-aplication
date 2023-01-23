@@ -14,6 +14,17 @@ import java.util.List;
 
 @Repository
 public class ZawodnicyDAO {
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
     @Autowired
     private JdbcTemplate jdbcTemplate1;
 
@@ -29,17 +40,23 @@ public class ZawodnicyDAO {
         return listZawodnicy;
     }
     public List<Zawodnicy> allList() {
-        String sql = "SELECT * FROM ZAWODNICY ";
+        String sql = "SELECT * FROM ZAWODNICY ORDER BY NR_ZAWODNIKA";
         List<Zawodnicy> listZawodnicy = jdbcTemplate1.query(sql,
                 BeanPropertyRowMapper.newInstance(Zawodnicy.class));
         return listZawodnicy;
     }
     /* Update – aktualizacja danych */
-    public void update2(Zawodnicy zawodnicy) {
+    public int update2(Zawodnicy zawodnicy) {
         String sql = "UPDATE ZAWODNICY SET NR_ZAWODNIKA=:nr_zawodnika, DATA_DOLACZENIA=:data_dolaczenia, NAZWISKO=:nazwisko, IMIE=:imie, DATA_URODZENIA=:data_urodzenia, PESEL=:pesel, NR_KONTA=:nr_konta WHERE NR_ZAWODNIKA=:nr_zawodnika";
-        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(zawodnicy);
-        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate1);
-        template.update(sql,param);
+        if (( String.valueOf(zawodnicy.getPesel()).length() != 11 )| (String.valueOf(zawodnicy.getNr_konta()).length() != 26 | !isNumeric(zawodnicy.getNr_konta()))| zawodnicy.getImie()=="" | zawodnicy.getNazwisko()=="") {
+            return 0;
+        } else {
+            BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(zawodnicy);
+            NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate1);
+            template.update(sql,param);
+            return 1;
+        }
+
     }
 
 

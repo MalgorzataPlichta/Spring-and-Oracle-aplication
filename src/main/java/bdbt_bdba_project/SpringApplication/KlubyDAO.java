@@ -1,5 +1,6 @@
 package bdbt_bdba_project.SpringApplication;
 
+import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,6 +13,26 @@ import java.util.List;
 
 @Repository
 public class KlubyDAO {
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isValidEmail(String email) {
+    // create the EmailValidator instance
+    EmailValidator validator = EmailValidator.getInstance();
+    // check for valid email addresses using isValid method
+    return validator.isValid(email);
+}
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -21,7 +42,7 @@ public class KlubyDAO {
     }
 
     public List<Kluby> list(){
-        String sql = "SELECT * FROM KLUBY";
+        String sql = "SELECT * FROM KLUBY ORDER BY NR_KLUBU";
         List<Kluby> listKluby = jdbcTemplate.query(sql,
                 BeanPropertyRowMapper.newInstance(Kluby.class));
         return listKluby;
@@ -43,15 +64,21 @@ public class KlubyDAO {
     }
 
     /* Update – aktualizacja danych */
-    public void update(Kluby kluby) {
+    public int update(Kluby kluby) {
         String sql = "UPDATE KLUBY SET NR_KLUBU=:nr_klubu, NAZWA=:nazwa, DATA_OTWARCIA=:data_otwarcia, NR_TELEFONU=:nr_telefonu, ADRES_EMAIL=:adres_email, NR_ADRESU=:nr_adresu WHERE NR_KLUBU=:nr_klubu";
-        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(kluby);
-        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
-        template.update(sql,param);
+        if (!isValidEmail(kluby.getAdres_email()) | !(kluby.getNr_adresu() >= 1) | kluby.getNazwa() == "" | String.valueOf(kluby.getNr_telefonu()).length() != 9) {
+            return 0;
+        } else {
+            BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(kluby);
+            NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+            template.update(sql, param);
+            return 1;
+        }
     }
+
     /* Delete – wybrany rekord z danym id */
     public void delete(int nr_klubu) {
-        String sql = "DELETE FROM KLUBY WHERE nr_klubu = ?";
+        String sql = "DELETE FROM KLUBY WHERE NR_KLUBU = ?";
         jdbcTemplate.update(sql,nr_klubu);
     }
 }

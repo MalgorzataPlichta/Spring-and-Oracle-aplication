@@ -85,11 +85,6 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/" style="color: #93c572"> BDBT Spring Boot Project: Athletics Club</a>
-            <button class="navbar-toggler" style="color: #93c572" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                    aria-controls="navbarResponsive"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
         </div>
         <ul class="nav navbar-nav">
             <li class="nav-item" >
@@ -143,16 +138,24 @@
                             <td><input type="text" th:field="*{nr_klubu}"></td>
                         </tr>
                         <tr>
+                            <td>Open Date</td>
+                            <td><input type="date" th:field="*{data_otwarcia}"></td>
+                        </tr>
+                        <tr>
                             <td>Club Name</td>
                             <td><input type="text" th:field="*{nazwa}"></td>
                         </tr>
                         <tr>
-                            <td>Phone number</td>
+                            <td>Phone Number</td>
                             <td><input type="text" th:field="*{nr_telefonu}"></td>
                         </tr>
                         <tr>
-                            <td>Mail adress</td>
+                            <td>Mail Adress</td>
                             <td><input type="text" th:field="*{adres_email}"></td>
+                        </tr>
+                        <tr>
+                            <td>Adress Number</td>
+                            <td><input type="text" th:field="*{nr_adresu}"></td>
                         </tr>
                         <tr style="text-align: center">
                             <td colspan="2"><button class="btn" type="submit">Save</button></td>

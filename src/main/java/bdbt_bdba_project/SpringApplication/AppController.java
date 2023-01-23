@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -83,7 +84,7 @@ public class AppController{
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute("klub")Kluby klub){
         dao.save(klub);
-        return "admin/add_Klub";
+        return "redirect:showKluby";
     }
     @RequestMapping("/edit/{nr_klubu}")
     public ModelAndView showEditForm(@PathVariable(name = "nr_klubu")int nr_klubu){
@@ -93,17 +94,29 @@ public class AppController{
         return mav;
     }
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update1(@ModelAttribute("Kluby") Kluby kluby){
-        dao.update(kluby);
-        return "redirect:showKluby";
+    public String update1(@ModelAttribute("Kluby") Kluby kluby , RedirectAttributes redirAttrs){
+        if (dao.update(kluby)==1) {
 
+            return "redirect:showKluby";
+        }
+        if (dao.update(kluby)==0){
+            redirAttrs.addFlashAttribute("error", "The error 500 occurred.");
+        }
+        return "redirect:DataError";
     }
+
 
     @RequestMapping(value = "/update2", method = RequestMethod.POST)
     public String update3(@ModelAttribute("Zawodnicy") Zawodnicy zawodnicy){
-        dao1.update2(zawodnicy);
-        return "redirect:main_user";
+        if (dao1.update2(zawodnicy)==1) {
 
+            return "redirect:main_user";
+        }
+        else if (dao1.update2(zawodnicy)==0){
+            return "redirect:DataError";
+        }
+
+        return "redirect:/";
     }
     @RequestMapping(value = "/save2", method = RequestMethod.POST)
     public String save(@ModelAttribute("zawodnicy")Zawodnicy zawodnicy){

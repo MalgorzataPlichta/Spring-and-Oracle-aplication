@@ -91,7 +91,7 @@
                 <a class="nav-link" href="http://localhost:8080/add_Klub" style="color: #004040">Add New Club</a>
             </li>
             <li class="nav-item" style="color: #004040">
-                <a class="nav-link" href="http://localhost:8080/add_Klub" style="color: #004040">Update/Delete Club</a>
+                <a class="nav-link" href="http://localhost:8080/showKluby" style="color: #004040">Update/Delete Club</a>
             </li>
             <li class="nav-item" style="color: #004040">
                 <a class="nav-link active" aria-current="page" href="#" style="color: #004040">Show Users</a>
@@ -102,24 +102,28 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th scope="col">Club number</th>
+                    <th scope="col">Contestant Number</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Date opened</th>
-                    <th scope="col">Phone number</th>
-                    <th scope="col">Mail address</th>
+                    <th scope="col">Surename</th>
+                    <th scope="col">pesel</th>
+                    <th scope="col">Bith Date</th>
+                    <th scope="col">Club Number</th>
+                    <th scope="col">Account Number</th>
+                    <th scope="col">Join Date</th>
                 </tr>
                 </thead>
                 <tbody>
 
                 <tr th:each = "Zawodnicy : ${zawodnicyList}">
                     <td th:text = "${Zawodnicy.nr_zawodnika}">Numer zawodnika</td>
-                    <td th:text = "${Zawodnicy.imie}">imie</td>
-                    <td th:text = "${Zawodnicy.nazwisko}">nazwisko</td>
-                    <td th:text = "${Zawodnicy.data_urodzenia}">data dolaczenia</td>
+                    <td th:text = "${Zawodnicy.imie}">Name</td>
+                    <td th:text = "${Zawodnicy.nazwisko}">Surename</td>
                     <td th:text = "${Zawodnicy.pesel}">pesel</td>
-                    <td th:text = "${Zawodnicy.data_dolaczenia}">Data dolaczenia</td>
-                    <td th:text = "${Zawodnicy.nr_konta}">Numer konta</td>
-                    <td th:text = "${Zawodnicy.nr_klubu}">Numer klubu</td>
+                    <td th:text = "${Zawodnicy.data_urodzenia}">Bith Date</td>
+                    <td th:text = "${Zawodnicy.nr_klubu}">Club Number</td>
+
+                    <td th:text = "${Zawodnicy.nr_konta}">Account Number</td>
+                    <td th:text = "${Zawodnicy.data_dolaczenia}">Join Date</td>
 
                     <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
                 </tr>
