@@ -1,24 +1,25 @@
+
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Main Admin Page</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 </head>
 <style>
 
+    body{
+        font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;;
+    }
     body {font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;;}
     .navbar-custom {
         height: 75px;
         padding: 10px 50px 10px 0;
         margin-bottom: 0;
         letter-spacing: 1px;
-
         color: #93c572;
         background-color: #004040;
     }
@@ -26,7 +27,7 @@
 
 
     button:hover {
-        background-color: #ffffff;
+        background-color: #e5e4e2;
         color: black;
     }
 
@@ -125,14 +126,15 @@
 </style>
 <body>
 
-
-
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-custom">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/" style="color: #93c572"> BDBT Spring Boot Project: Athletics Club</a>
-            <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" style="color: #93c572" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
         </div>
         <ul class="nav navbar-nav">
@@ -140,89 +142,75 @@
                 <a class="nav-link" th:href="@{/index}">Home
                 </a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/main}">Main</a>
             </li>
-
-
-
         </ul>
         <li class="nav-item" style="text-align: right; font-size: 20px; margin: 10px 10px; list-style: none">
             <a class="nav-link" th:inline="text" style="color:#93c572;">You are logged in as <b
                     style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
         </li>
     </div>
-
 </nav>
-
-
 
 <div class="bigger-cont" style="background-color: #93c572; height: 800px; ">
     <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 800px; padding-top: 25px">
-        <ul class="nav nav-tabs" style="color: #004040">
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/main_admin">Main Admin</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/add_Klub">Add New Club</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Update/Delete Club</a>
-            </li>
-        </ul>
 
-        <div class="row" style="padding-top: 20px">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">Club number</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Date opened</th>
-                    <th scope="col">Phone number</th>
-                    <th scope="col">Mail address</th>
-                </tr>
-                </thead>
-                <tbody>
+        <ul class="nav nav-tabs" style="color: #93c572">
+            <ul class="nav nav-tabs" style="color: #004040">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/main_admin">Main Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/add_Klub">Add New Club</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Update/Delete Club</a>
+                </li>
+            </ul>
+            <div class="row" style="padding-top: 20px">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Club number</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Date opened</th>
+                        <th scope="col">Phone number</th>
+                        <th scope="col">Mail address</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each = "Kluby : ${klubyList}">
+                        <td th:text = "${Kluby.nr_klubu}">Numer klubu</td>
+                        <td th:text = "${Kluby.nazwa}">Nazwa</td>
+                        <td th:text = "${Kluby.data_otwarcia}">Data otwarcia</td>
+                        <td th:text = "${Kluby.nr_telefonu}">Numer telefonu</td>
+                        <td th:text = "${Kluby.adres_email}">Adres mail</td>
+                        <td> <a th:href="@{'/edit/'+ ${Kluby.nr_klubu}}">Edit</a> </td>
+                        <td> <a th:href="@{'/delete/'+ ${Kluby.nr_klubu}}">Delete</a> </td>
+                            <button onclick="document.getElementById('id01').style.display='block'">Delate</button>
 
-                <tr th:each = "Kluby : ${klubyList}">
-                    <td th:text = "${Kluby.nr_klubu}">Numer klubu</td>
-                    <td th:text = "${Kluby.nazwa}">Nazwa</td>
-                    <td th:text = "${Kluby.data_otwarcia}">Data otwarcia</td>
-                    <td th:text = "${Kluby.nr_telefonu}">Numer telefonu</td>
-                    <td th:text = "${Kluby.adres_email}">Adres mail</td>
-                    <td>
-                        <a th:href="@{'/edit/'+ ${Kluby.nr_klubu}}">Edit</a>
-                        &nbsp;&nbsp;&nbsp;
-                        <button onclick="document.getElementById('id01').style.display='block'">Delate</button>
+                            <div id="id01" class="modal">
+                                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+                                <form class="modal-content" action="/action_page.php">
+                                    <div class="container">
+                                        <h1>Delete Club</h1>
+                                        <p>Are you sure you want to delete this Club?</p>
 
-                        <div id="id01" class="modal">
-                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                            <form class="modal-content" action="/action_page.php" >
-                                <div class="container">
-                                    <h1>Delete Club</h1>
-                                    <p>Are you sure you want to delete this Club?</p>
-
-                                    <div class="clearfix">
-                                        <button class="del"  onclick="document.location='default.asp'+ ${Kluby.nr_klubu}}" >Delete</button>
-                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-
+                                        <div class="clearfix">
+                                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                            <a class="del" th:href="@{'/delete/'+ ${Kluby.nr_klubu}}">Delete</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
-                    </td>
-                    <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
-                </tr>
-                </tbody>
-            </table>
-
-        </div>
-
-
+                                </form>
+                            </div>
+                        </td>
+                        <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
     </div>
-
-
 </div>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
