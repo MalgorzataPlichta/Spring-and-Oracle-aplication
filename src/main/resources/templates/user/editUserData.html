@@ -227,32 +227,28 @@
 
 
 
-<div class="bigger-cont" style="background-color: #93c572; height: 1000px;">
+<div class="bigger-cont" style="background-color: #93c572; height: auto">
   <div class="container" style=" background-color: rgb(229,228,226);  padding-right: 60px; padding-left:60px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 1010px; padding-top: 25px">
 
     <form action="#" th:action="@{/update2}" th:object="${zawodnicy}" method="post">
+      <h1><legend> Edit your data</legend></h1>
 
-      <h1>Sign Up</h1>
-
-
-
-        <legend><span class="number">1</span> Edit your data</legend>
-        <label for="name">Contestant number:</label>
+        <label for="name">User ID</label>
         <input id="name" type="text" th:field="*{nr_zawodnika}" readonly="readonly">
 
-        <label for="name">Name:</label>
+        <label for="name">Name</label>
         <input type="text" th:field="*{imie}">
 
-        <label for="name">Nazwisko:</label>
+        <label for="name">Surname</label>
         <input  type="text" th:field="*{nazwisko}">
 
-        <label for="name">PESEL:</label>
+        <label for="name">PESEL</label>
         <input type="number" th:field="*{pesel}">
 
-        <label for="name">Birth Date:</label>
+        <label for="name">Birth Date</label>
         <input type="date" th:field="*{data_urodzenia}">
 
-        <label for="name">Join Date:</label>
+        <label for="name">Join Date</label>
         <input nput type="date" th:field="*{data_dolaczenia}">
 
 
