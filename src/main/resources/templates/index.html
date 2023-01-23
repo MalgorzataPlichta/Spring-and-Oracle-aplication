@@ -73,6 +73,29 @@
 
             </div>
         </div>
+        <br>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Club number</th>
+                <th scope="col">Name</th>
+                <th scope="col">Date opened</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Mail address</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each = "Kluby : ${klubyList}">
+                <td th:text = "${Kluby.nr_klubu}">Numer klubu</td>
+                <td th:text = "${Kluby.nazwa}">Nazwa</td>
+                <td th:text = "${Kluby.data_otwarcia}">Data otwarcia</td>
+                <td th:text = "${Kluby.nr_telefonu}">Numer telefonu</td>
+                <td th:text = "${Kluby.adres_email}">Adres mail</td>
+                <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
+            </tr>
+            </tbody>
+        </table>
         <br><br>
         <br>
         <div class="container" style="justify-content: center; max-width: 600px; ">
@@ -118,28 +141,7 @@
         <div style="font-size: 20px; padding-top: 10px; padding-bottom: 15px"> Appropriately qualified trainers conduct classes in small groups, which ensures an individual approach. At our facility, you can train primarily athletics. Groups are selected based on age and ability. We also have a special program for seniors and pregnant women. We are open to multiculturalism and diversity, which is confirmed by many years of experience and cooperation with sports centers abroad. We also organize competitions of various ranks, as well as sports exchanges.</div>
         <br>
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Club number</th>
-                <th scope="col">Name</th>
-                <th scope="col">Date opened</th>
-                <th scope="col">Phone number</th>
-                <th scope="col">Mail address</th>
-            </tr>
-            </thead>
-            <tbody>
 
-            <tr th:each = "Kluby : ${klubyList}">
-                <td th:text = "${Kluby.nr_klubu}">Numer klubu</td>
-                <td th:text = "${Kluby.nazwa}">Nazwa</td>
-                <td th:text = "${Kluby.data_otwarcia}">Data otwarcia</td>
-                <td th:text = "${Kluby.nr_telefonu}">Numer telefonu</td>
-                <td th:text = "${Kluby.adres_email}">Adres mail</td>
-                <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
-            </tr>
-            </tbody>
-        </table>
         <br>
         <br>
         <br>
