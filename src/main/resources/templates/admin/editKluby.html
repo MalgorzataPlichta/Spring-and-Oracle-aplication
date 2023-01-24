@@ -24,6 +24,13 @@
         color: #93c572;
         background-color: #004040;
     }
+    input:valid {
+        background-color: #b4e7b4;
+    }
+
+    input:invalid {
+        background-color: lightpink;
+    }
 
 
 </style>
@@ -73,6 +80,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="http://localhost:8080/showKluby">Update/Delete Club</a>
             </li>
+            <li class="nav-item" style="color: #004040">
+                <a class="nav-link" href="http://localhost:8080/showUsers" style="color: #004040">Show Users</a>
+            </li>
         </ul>
 
         <div class="row" style="padding-top: 20px">
@@ -83,27 +93,27 @@
                     <table border="1" cellpadding="10">
                         <tr>
                             <td>Numer KLubu:</td>
-                            <td><input type="text" th:field="*{nr_klubu}" readonly="readonly"></td>
+                            <td><input type="number" th:field="*{nr_klubu}" readonly="readonly"></td>
                         </tr>
                         <tr>
                             <td>Nazwa Klubu :</td>
-                            <td><input type="text" th:field="*{nazwa}"></td>
+                            <td><input type="text" th:field="*{nazwa}" required></td>
                         </tr>
 
                             <td>Data Otwarcia :</td>
-                            <td><input type="date" th:field="*{data_otwarcia}"></td>
+                            <td><input type="date" th:field="*{data_otwarcia}" required></td>
                         </tr>
                         <tr>
                             <td>Numer telefonu :</td>
-                            <td><input type="text" th:field="*{nr_telefonu}"></td>
+                            <td><input type="text" th:field="*{nr_telefonu}" pattern="[0-9]{9}" required></td>
                         </tr>
                         <tr>
                             <td>Adres Email :</td>
-                            <td><input type="text" th:field="*{adres_email}"></td>
+                            <td><input type="email" th:field="*{adres_email}" required></td>
                         </tr>
                         <tr>
                             <td>Nr Adresu :</td>
-                            <td><input type="text" th:field="*{nr_adresu}"></td>
+                            <td><input type="text" th:field="*{nr_adresu}" required></td>
                         </tr>
 
 

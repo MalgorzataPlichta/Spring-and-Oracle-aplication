@@ -48,16 +48,14 @@ public class ZawodnicyDAO {
     /* Update – aktualizacja danych */
     public int update2(Zawodnicy zawodnicy) {
         String sql = "UPDATE ZAWODNICY SET NR_ZAWODNIKA=:nr_zawodnika, DATA_DOLACZENIA=:data_dolaczenia, NAZWISKO=:nazwisko, IMIE=:imie, DATA_URODZENIA=:data_urodzenia, PESEL=:pesel, NR_KONTA=:nr_konta WHERE NR_ZAWODNIKA=:nr_zawodnika";
-        if (( String.valueOf(zawodnicy.getPesel()).length() != 11 )| (String.valueOf(zawodnicy.getNr_konta()).length() != 26 | !isNumeric(zawodnicy.getNr_konta()))| zawodnicy.getImie()=="" | zawodnicy.getNazwisko()=="") {
-            return 0;
-        } else {
+
             BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(zawodnicy);
             NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate1);
             template.update(sql,param);
             return 1;
         }
 
-    }
+
 
 
     public void save2(Zawodnicy zawodnicy) {

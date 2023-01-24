@@ -73,7 +73,7 @@ public class AppController{
     public String delete(@PathVariable(name = "nr_klubu") int nr_klubu){
         dao.delete(nr_klubu);
 
-        return "redirect:/";
+        return  "redirect:/showKluby";
     }
     @RequestMapping("/add_Klub")
     public String vievAdminAddingPanel(Model model){
@@ -92,6 +92,24 @@ public class AppController{
         Kluby kluby = dao.get(nr_klubu);
         mav.addObject("kluby",kluby);
         return mav;
+    }
+    @RequestMapping("/edit1/{nr_zawodnika}")
+    public ModelAndView showEditFormUSer(@PathVariable(name = "nr_zawodnika")int nr_zawodnika){
+        ModelAndView mav = new ModelAndView("admin/editZawodnicy");
+        Zawodnicy zawodnicy = dao1.get2(nr_zawodnika);
+        mav.addObject("zawodnicy",zawodnicy);
+        return mav;
+    }
+    @RequestMapping(value = "/update5", method = RequestMethod.POST)
+    public String update5(@ModelAttribute("Zawodnicy") Zawodnicy zawodnicy , RedirectAttributes redirAttrs){
+        if (dao1.update2(zawodnicy)==1) {
+
+            return "redirect:showUsers";
+        }
+        if (dao1.update2(zawodnicy)==0){
+            redirAttrs.addFlashAttribute("error", "The error 500 occurred.");
+        }
+        return "redirect:DataError";
     }
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update1(@ModelAttribute("Kluby") Kluby kluby , RedirectAttributes redirAttrs){

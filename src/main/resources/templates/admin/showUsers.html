@@ -124,6 +124,8 @@
 
                     <td th:text = "${Zawodnicy.nr_konta}">Account Number</td>
                     <td th:text = "${Zawodnicy.data_dolaczenia}">Join Date</td>
+                    <td> <a style="color: #004040" th:href="@{'/edit1/'+ ${Zawodnicy.nr_zawodnika}}">Edit</a>
+                    </td>
 
                     <!--<td th:text = "${kluby.nr_adresu}">Numer adresu</td> -->
                 </tr>
