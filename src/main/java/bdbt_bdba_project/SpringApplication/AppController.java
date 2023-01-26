@@ -42,7 +42,7 @@ public class AppController{
             }
             else
             {
-                return "redirect:/index";
+                return "redirect:/";
             }
         }
     }

@@ -40,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/index","about").permitAll()
                 .antMatchers("/resources/static/**").permitAll()
                 .antMatchers("/main").authenticated()
-                .antMatchers("/main_admin","/add_Klub","/showKluby","/showUsers","/editKluby", "/edit/**").access("hasRole('ADMIN')")
+                .antMatchers("/main_admin","/add_Klub","/showKluby","/showUsers","/editKluby", "/edit/**","/editZawodnicy","/edit1/**","/delete/**").access("hasRole('ADMIN')")
                 .antMatchers("main_user", "editUserData").access("hasRole('USER')")
                 .and()
                 .formLogin()
@@ -50,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/index")
-                .logoutSuccessUrl("/index")
+                .logoutSuccessUrl("/")
                 .permitAll();
     }
 }

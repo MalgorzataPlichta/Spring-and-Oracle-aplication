@@ -99,6 +99,11 @@
 
 
 	</dependencies>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${org.springframework-version}</version>
+	</dependency>
 
 	<pluginRepositories>
 		<pluginRepository>
